@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Sun Apr 05 14:20:04 BRT 2020
+#Sun Apr 05 15:47:57 BRT 2020
 5.base=C\:\\Users\\gabri\\OneDrive\\Documentos\\GitHub\\ftt-cordova-n2\\platforms\\android\\app\\build\\intermediates\\assets\\debug
 22.path=www/tab03feature.html
 32.set=ASSET

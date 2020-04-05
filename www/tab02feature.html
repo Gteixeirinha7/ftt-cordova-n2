@@ -50,7 +50,7 @@
         document.getElementById("meaningId").innerHTML = "";
         document.getElementById("pronunciationId").innerHTML = "";
 
-        callRequest(url+document.getElementById('wordId').value, function (nData) {
+        callRequest(url+document.getElementById('wordId').value.toLocaleLowerCase(), function (nData) {
             var wordData = nData;
             if(wordData.entries.length){
                 var sensesList = wordData.entries[0].lexemes[0].senses;
@@ -122,9 +122,9 @@
             </div>
             <div class="col-sm center-txt button-selected"><b onclick='window.location="tab02feature.html"'>Feature Dictionary<br><span class="icon-font">&#x1f4cc;</span></b>
             </div>
-            <div class="col-sm center-txt"><b onclick='window.location="tab03feature.html"'>Feature 3<br><span class="icon-font">&#x1F4DD;</span></b>
+            <div class="col-sm center-txt"><b onclick='window.location="tab03feature.html"'>Feature Name/Age<br><span class="icon-font">&#x1F4DD;</span></b>
             </div>
-            <div class="col-sm center-txt"><b onclick='window.location="tab04feature.html"'>Feature 4<br><span class="icon-font">&#x1F981;</span></b>
+            <div class="col-sm center-txt"><b onclick='window.location="tab04feature.html"'>Feature Trump Dumppest Quotes<br><span class="icon-font">&#x1F981;</span></b>
             </div>
         </div>
     </nav>

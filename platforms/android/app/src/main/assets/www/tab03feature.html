@@ -45,6 +45,34 @@
     </STYLE>
     <SCRIPT>
 
+    function searchWord(url) {
+        document.getElementById("wordIdSearched").innerHTML = "";
+
+        callRequest(url +'?name='+ document.getElementById('wordId').value+'&country_id=BR', function (nData) {
+            var wordData = nData;
+            if (wordData.age) {
+                document.getElementById("wordIdSearched").innerHTML = 'Name: '+wordData.name+', Age: '+ wordData.age;
+            }else{
+                document.getElementById("wordIdSearched").innerHTML = 'Name Doesn\'t exists.';                
+            }
+        });
+    }
+
+
+    function callRequest(url, callback) {
+        var xhr = new XMLHttpRequest();
+        xhr.onload = function () {
+            if (xhr.status >= 200 && xhr.status < 300) {
+                var newsData = JSON.parse(xhr.responseText);
+                callback(newsData);
+            } else {
+                console.log('Ops!!! The request failed!');
+            }
+        };
+
+        xhr.open('GET', url);
+        xhr.send();
+    }
 
 
     </SCRIPT>
@@ -68,10 +96,14 @@
         </div>
     </nav>
 
-    <main class="container"  >
+    <main class="container">
         <hr>
-        <h1><span class="badge badge-success">Projeto do aluno!!<br>Feature 3</span></h1>
-        <p><a href="https://github.com/public-apis/public-apis" target="_apis">Lista de APIs públicas</a></p>
+        <h1><span class="badge badge-success">Projeto do aluno!!<br>Feature Name/Age</span></h1>
+        <label for="exampleInputEmail1">Name:</label>
+        <input type="text" class="form-control" id="wordId" aria-describedby="" placeholder="Enter text">
+        <small id="emailHelp" class="form-text text-muted">Search for a name and your closest age</small>
+        <p><button class="btn btn-dark" onclick="searchWord('https://api.agify.io/')">Search</button></p>
+        <p><h1 class="mt-5" id="wordIdSearched"></h1></p>
     </main>
 
     <nav class="navbar fixed-bottom navbar-light bg-light width-button-bar">
@@ -80,9 +112,9 @@
             </div>
             <div class="col-sm center-txt"><b onclick='window.location="tab02feature.html"'>Feature Dictionary<br><span class="icon-font">&#x1f4cc;</span></b>
             </div>
-            <div class="col-sm center-txt button-selected"><b onclick='window.location="tab03feature.html"'>Feature 3<br><span class="icon-font">&#x1F4DD;</span></b>
+            <div class="col-sm center-txt button-selected"><b onclick='window.location="tab03feature.html"'>Feature Name/Age<br><span class="icon-font">&#x1F4DD;</span></b>
             </div>
-            <div class="col-sm center-txt"><b onclick='window.location="tab04feature.html"'>Feature 4<br><span class="icon-font">&#x1F981;</span></b>
+            <div class="col-sm center-txt"><b onclick='window.location="tab04feature.html"'>Feature Trump Dumppest Quotes<br><span class="icon-font">&#x1F981;</span></b>
             </div>
         </div>
     </nav>
