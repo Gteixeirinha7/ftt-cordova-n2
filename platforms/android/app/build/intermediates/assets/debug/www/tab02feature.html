@@ -45,8 +45,44 @@
     </STYLE>
     <SCRIPT>
 
+    function searchWord(url) {
+        document.getElementById("wordIdSearched").innerHTML = "";
+        document.getElementById("meaningId").innerHTML = "";
+        document.getElementById("pronunciationId").innerHTML = "";
+
+        callRequest(url+document.getElementById('wordId').value, function (nData) {
+            var wordData = nData;
+            if(wordData.entries.length){
+                var sensesList = wordData.entries[0].lexemes[0].senses;
+                var msgSense = '';
+                for(var i=0; i<sensesList.length;i++){
+                    msgSense += sensesList[i].definition+', ';
+                }
+                document.getElementById("wordIdSearched").innerHTML = wordData.entries[0].entry;
+                document.getElementById("meaningId").innerHTML = msgSense;
+                document.getElementById("pronunciationId").innerHTML = wordData.entries[0].pronunciations[0].transcriptions[0].transcription + ', ' + wordData.entries[0].pronunciations[0].transcriptions[0].notation+', '+ wordData.entries[0].pronunciations[0].context.regions[0];
+            }
+        });
+    }
 
 
+    function callRequest(url, callback) {
+        var xhr = new XMLHttpRequest();
+        xhr.onload = function () {
+            if (xhr.status >= 200 && xhr.status < 300) {
+                var newsData = JSON.parse(xhr.responseText);
+                callback(newsData);
+            } else {
+                console.log('Ops!!! The request failed!');
+            }
+        };
+
+        xhr.open('GET', url);
+        xhr.setRequestHeader("x-rapidapi-host", "lingua-robot.p.rapidapi.com");
+        xhr.setRequestHeader("x-rapidapi-key", "217bd39fb9msh8691c29ec1a5591p17f8a2jsn717a97b2d5bf");
+        xhr.withCredentials = true;
+        xhr.send();
+    }
     </SCRIPT>
 </HEAD>
 
@@ -68,17 +104,23 @@
         </div>
     </nav>
 
-    <main class="container" id="aluno">
+    <main class="container"  >
         <hr>
-        <h1><span class="badge badge-success">Projeto do aluno!!<br>Feature 2</span></h1>
-        <p><a href="https://github.com/public-apis/public-apis" target="_apis">Lista de APIs públicas</a></p>
+        <h1><span class="badge badge-success">Projeto do aluno!!<br>Feature Dictionary</span></h1>
+        <label for="exampleInputEmail1">Word:</label>
+        <input type="text" class="form-control" id="wordId" aria-describedby="" placeholder="Enter text">
+        <small id="emailHelp" class="form-text text-muted">Search for a word meaning</small>
+        <p><button class="btn btn-dark" onclick="searchWord('https://lingua-robot.p.rapidapi.com/language/v1/entries/en/')">Search</button></p>
+        <h1 class="mt-5" id="wordIdSearched"></h1>
+        <p class="lead" id="meaningId"></p>
+        <p id="pronunciationId"></p>
     </main>
 
     <nav class="navbar fixed-bottom navbar-light bg-light width-button-bar">
         <div class="row w-100 bottom-button-bar">
             <div class="col-sm center-txt"><b onclick='window.location="tab01feature.html"'>Feature Jokes<br><span class="icon-font">&#x1f4f0;</span></b>
             </div>
-            <div class="col-sm center-txt button-selected"><b onclick='window.location="tab02feature.html"'>Feature 2<br><span class="icon-font">&#x1f4cc;</span></b>
+            <div class="col-sm center-txt button-selected"><b onclick='window.location="tab02feature.html"'>Feature Dictionary<br><span class="icon-font">&#x1f4cc;</span></b>
             </div>
             <div class="col-sm center-txt"><b onclick='window.location="tab03feature.html"'>Feature 3<br><span class="icon-font">&#x1F4DD;</span></b>
             </div>
