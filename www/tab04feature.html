@@ -42,6 +42,29 @@
             padding-top: 56px;
             padding-bottom: 50px;
         }
+        .buttons{
+            background-size: contain !important;
+            height: 70px;
+            margin: 0px;
+            padding: 0px;
+            width: 60px;
+        }
+        .btn1{
+            background: url(img/jokes.png) no-repeat center top;
+            width: 80px;
+        }
+        .btn2{
+            background: url(img/dictionary.png) no-repeat center top;
+            width: 80px;
+        }
+        .btn3{
+            background: url(img/age.png) no-repeat center top;
+            width: 80px;
+        }
+        .btn4{
+            background: url(img/trump.png) no-repeat center top;
+            width: 80px;
+        }
     </STYLE>
     <SCRIPT>
 
@@ -99,7 +122,10 @@
 
     <main class="container"  >
         <hr>
-        <h1><span class="badge badge-success">Projeto do aluno!!<BR>Feature Trump Quotes</span></h1>
+        <h1><span class="badge badge-success">Feature Trump Quotes</span></h1>
+        <p></p>
+        <label>Donald Trump ... and his beautiful phrases, shall we find one?</label>
+        <p></p>
         <p><button class="btn btn-dark" onclick="searchWord('https://www.tronalddump.io/random/quote')">Search for a Trump Quote...</button></p>
         <p><h1 class="mt-5" id="wordIdSearched"></h1></p>
         <p class="lead" id="meaningId"></p>
@@ -108,14 +134,13 @@
 
     <nav class="navbar fixed-bottom navbar-light bg-light width-button-bar">
         <div class="row w-100 bottom-button-bar">
-            <div class="col-sm center-txt"><b onclick='window.location="tab01feature.html"'>Feature Jokes<br><span class="icon-font">&#x1f4f0;</span></b>
+            <div class="col-sm center-txt"><b onclick='window.location="tab01feature.html"'>Feature Jokes<div class="col-sm center-txt button-selected buttons btn1"></div></b>
             </div>
-            <div class="col-sm center-txt"><b onclick='window.location="tab02feature.html"'>Feature Dictionary<br><span class="icon-font">&#x1f4cc;</span></b>
+            <div class="col-sm center-txt"><b onclick='window.location="tab02feature.html"'>Feature Dictionary<div class="col-sm center-txt button-selected buttons btn2"></div></b>
             </div>
-            <div class="col-sm center-txt"><b onclick='window.location="tab03feature.html"'>Feature Name/Age<br><span class="icon-font">&#x1F4DD;</span></b>
+            <div class="col-sm center-txt"><b onclick='window.location="tab03feature.html"'>Feature Name/Age<div class="col-sm center-txt button-selected buttons btn3"></div></b>
             </div>
-            <div class="col-sm center-txt button-selected"><b onclick='window.location="tab04feature.html"'>Feature Trump Dumppest Quotes<br><span class="icon-font">&#x1F981;</span></b>
-            </div>
+            <div class="col-sm center-txt button-selected"><b onclick='window.location="tab04feature.html"'>Feature Trump Quotes<div class="col-sm center-txt button-selected buttons btn4"></div></b></div>
         </div>
     </nav>
 </BODY>
