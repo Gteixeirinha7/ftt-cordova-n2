@@ -1,4 +1,4 @@
-ftt.ec.news
+ftt.ec.modular
 int drawable screen 0x7f010000
 int mipmap ic_launcher 0x7f020000
 int mipmap ic_launcher_background 0x7f020001

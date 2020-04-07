@@ -17,7 +17,7 @@
        under the License.
  */
 
-package ftt.ec.news;
+package ftt.ec.modular;
 
 import android.os.Bundle;
 import org.apache.cordova.*;

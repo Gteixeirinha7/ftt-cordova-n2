@@ -1,8 +1,8 @@
 {
-    "name": "ftt.ec.news",
-    "displayName": "FttAppNews",
-    "version": "1.0.0",
-    "description": "A sample Apache Cordova application that responds to the deviceready event.",
+    "name": "ftt.ec.modular",
+    "displayName": "Modular API N2",
+    "version": "1.1.0",
+    "description": "A sample Apache Cordova application to request to Open APIs.",
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"

@@ -5,7 +5,7 @@
  * should not be modified by hand.
  */
 
-package ftt.ec.news;
+package ftt.ec.modular;
 
 public final class R {
   public static final class drawable {

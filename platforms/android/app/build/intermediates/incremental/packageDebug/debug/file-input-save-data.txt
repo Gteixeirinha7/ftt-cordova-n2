@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Mon Apr 06 21:22:18 BRT 2020
+#Mon Apr 06 22:40:04 BRT 2020
 5.base=C\:\\Users\\gabri\\OneDrive\\Documentos\\GitHub\\ftt-cordova-n2\\platforms\\android\\app\\build\\intermediates\\assets\\debug
 42.base=C\:\\Users\\gabri\\OneDrive\\Documentos\\GitHub\\ftt-cordova-n2\\platforms\\android\\app\\build\\intermediates\\assets\\debug
 22.path=www/css/index.css

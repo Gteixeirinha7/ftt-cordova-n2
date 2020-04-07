@@ -1,32 +1,32 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\x4n\\work\\FTT\\LP3\\CODE\\fttnews\\platforms\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+            "outputFile": "C:\\Users\\gabri\\OneDrive\\Documentos\\GitHub\\ftt-cordova-n2\\platforms\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
             "map": [
                 {
-                    "source": "C:\\x4n\\work\\FTT\\LP3\\CODE\\fttnews\\platforms\\android\\app\\src\\main\\res\\values\\strings.xml",
+                    "source": "C:\\Users\\gabri\\OneDrive\\Documentos\\GitHub\\ftt-cordova-n2\\platforms\\android\\app\\src\\main\\res\\values\\strings.xml",
                     "from": {
-                        "startLines": "4,2,3",
-                        "startColumns": "4,4,4",
-                        "startOffsets": "162,55,103",
-                        "endColumns": "63,47,58",
-                        "endOffsets": "221,98,157"
+                        "startLines": "-1,2,-1",
+                        "startColumns": "-1,4,-1",
+                        "startOffsets": "-1,55,-1",
+                        "endColumns": "-1,51,-1",
+                        "endOffsets": "-1,102,-1"
                     },
                     "to": {
                         "startLines": "2,3,4",
                         "startColumns": "4,4,4",
-                        "startOffsets": "55,119,167",
-                        "endColumns": "63,47,58",
-                        "endOffsets": "114,162,221"
+                        "startOffsets": "55,119,171",
+                        "endColumns": "63,51,58",
+                        "endOffsets": "114,166,225"
                     }
                 }
             ]
         },
         {
-            "outputFile": "C:\\Users\\gabri\\OneDrive\\Documentos\\GitHub\\ftt-cordova-n2\\platforms\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+            "outputFile": "C:\\x4n\\work\\FTT\\LP3\\CODE\\fttnews\\platforms\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\gabri\\OneDrive\\Documentos\\GitHub\\ftt-cordova-n2\\platforms\\android\\app\\src\\main\\res\\values\\strings.xml",
+                    "source": "C:\\x4n\\work\\FTT\\LP3\\CODE\\fttnews\\platforms\\android\\app\\src\\main\\res\\values\\strings.xml",
                     "from": {
                         "startLines": "4,2,3",
                         "startColumns": "4,4,4",
