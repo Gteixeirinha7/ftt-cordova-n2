@@ -38,6 +38,9 @@
         .icon-font {
             font-size: 40px;   
         }
+        .maincontainer {
+           height: 900px;   
+        }
         main {
             padding-top: 56px;
             padding-bottom: 50px;
@@ -53,8 +56,12 @@
             background: url(img/jokes.png) no-repeat center top;
             width: 80px;
         }
+        .center{
+            text-align: center;
+        }
         .btn2{
             background: url(img/dictionary.png) no-repeat center top;
+            background-color: white;
             width: 80px;
         }
         .btn3{
@@ -69,16 +76,36 @@
     <SCRIPT>
 
     function searchWord(url) {
-        document.getElementById("wordIdSearched").innerHTML = "";
-        document.getElementById("meaningId").innerHTML = "";
-        document.getElementById("pronunciationId").innerHTML = "";
 
         callRequest(url, function (nData) {
             var wordData = nData;
-                document.getElementById("wordIdSearched").innerHTML = wordData.value;
-                document.getElementById("meaningId").innerHTML = 'About: '+wordData.tags[0];
-                document.getElementById("pronunciationId").innerHTML = 'Appeared At: '+ new Date(wordData.appeared_at).toLocaleDateString();
-            
+
+            var a = document.createElement("ARTICLE"); // Create a <ARTICLE> element
+            a.setAttribute("class", "card");
+
+            a.style.padding = '10px';
+            a.style.margin = '5px';
+
+            var h1 = document.createElement("H2"); // Create a <H2> element
+            var h2 = document.createElement("H2"); // Create a <H2> element
+            var desc = document.createElement("P"); // Create a <H2> element
+
+            h1.innerText = wordData.value;
+            if(wordData.tags)
+                h2.innerText = 'About: ' + wordData.tags[0]; // Create a text node
+            h2.style.fontSize = '18px'; // Create a text node
+            if(wordData.appeared_at)
+                desc.innerText = 'Appeared At: ' + new Date(wordData.appeared_at).toLocaleDateString();
+
+            a.appendChild(h1); // Append the text to 
+            a.appendChild(h2); // Append the text to 
+            a.appendChild(document.createElement("P")); // Append the text to 
+            a.appendChild(desc);
+
+            var wordString = document.getElementById("dicId").innerHTML;
+            document.getElementById("dicId").innerHTML = '';
+            document.getElementById("dicId").appendChild(a);
+            document.getElementById("dicId").innerHTML += wordString;
         });
     }
 
@@ -120,16 +147,14 @@
         </div>
     </nav>
 
-    <main class="container"  >
+    <main class="container maincontainer"  >
         <hr>
-        <h1><span class="badge badge-success">Feature Trump Quotes</span></h1>
+        <h1 class="center" ><span class="badge badge-success">Feature Trump Quotes</span></h1>
         <p></p>
-        <label>Donald Trump ... and his beautiful phrases, shall we find one?</label>
+        <label  class="center">Donald Trump ... and his beautiful phrases, shall we find one?</label>
         <p></p>
-        <p><button class="btn btn-dark" onclick="searchWord('https://www.tronalddump.io/random/quote')">Search for a Trump Quote...</button></p>
-        <p><h1 class="mt-5" id="wordIdSearched"></h1></p>
-        <p class="lead" id="meaningId"></p>
-        <p id="pronunciationId"></p>
+        <p  class="center"><button class="btn btn-dark" onclick="searchWord('https://www.tronalddump.io/random/quote')">Search for a Trump Quote...</button></p>
+        <div id="dicId" style="margin-bottom: 150px;"></div>
     </main>
 
     <nav class="navbar fixed-bottom navbar-light bg-light width-button-bar">

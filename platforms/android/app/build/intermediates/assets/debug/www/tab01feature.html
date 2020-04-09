@@ -43,6 +43,9 @@
             font-size: 40px;
         }
 
+        .icon-font {
+           height: 900px;   
+        }
         main {
             padding-top: 56px;
             padding-bottom: 50px;
@@ -58,8 +61,12 @@
             background: url(img/jokes.png) no-repeat center top;
             width: 80px;
         }
+        .center{
+            text-align: center;
+        }
         .btn2{
             background: url(img/dictionary.png) no-repeat center top;
+            background-color: white;
             width: 80px;
         }
         .btn3{
@@ -73,19 +80,18 @@
     </STYLE>
     <SCRIPT>
         function createNews(url) {
-            document.getElementById("noticias").innerHTML = "";
-
             callRequest(url, function (nData) {
                 var a = document.createElement("ARTICLE"); // Create a <ARTICLE> element
-                var a1 = document.createElement("ARTICLE"); // Create a <ARTICLE> element
                 a.setAttribute("class", "card");
-                a1.setAttribute("class", "card");
 
-                var h1 = document.createElement("H1"); // Create a <H2> element
-                var h2 = document.createElement("H2"); // Create a <H2> element
+                a.style.padding = '10px';
+                a.style.margin = '5px';
+
+                var h1 = document.createElement("H2"); // Create a <H2> element
+                var h2 = document.createElement("H3"); // Create a <H2> element
                 var desc = document.createElement("P"); // Create a <H2> element
 
-                h1.innerText = nData.category; // Create a text node
+                h1.innerText = 'Type: '+nData.category; // Create a text node
 
                 if (nData.type == 'single') {
                     h2.innerText = nData.joke; // Create a text node
@@ -96,9 +102,13 @@
 
                 a.appendChild(h1); // Append the text to 
                 a.appendChild(h2); // Append the text to 
+                a.appendChild(document.createElement("P")); // Append the text to 
                 a.appendChild(desc);
 
-                document.getElementById("noticias").appendChild(a);
+                var wordString = document.getElementById("jokesId").innerHTML;
+                document.getElementById("jokesId").innerHTML = '';
+                document.getElementById("jokesId").appendChild(a);
+                document.getElementById("jokesId").innerHTML += wordString;
             });
         }
 
@@ -138,14 +148,14 @@
         </div>
     </nav>
 
-    <main class="container"  >
+    <main class="container maincontainer"  >
         <hr>
-        <h1><span class="badge badge-success"><br>Feature Jokes</span></h1>
+        <h1 class="center"><span class="badge badge-success center">Feature Jokes</span></h1>
         <p></p>
-        <label>Description: API call looking for black humor jokes, press Search to search for a joke</label>
+        <label class="center">Description: API call looking for black humor jokes, press Search to search for a joke</label>
         <p></p>
-        <p><button class="btn btn-dark" onclick="createNews('https://sv443.net/jokeapi/v2/joke/Any')">Search Jokes</button></p>
-        <div class="noticias" id="noticias"></div>
+        <p  class="center" ><button class="btn btn-dark" onclick="createNews('https://sv443.net/jokeapi/v2/joke/Any')">Search Jokes</button></p>
+        <div class="jokesId" id="jokesId" style="margin-bottom: 150px;"></div>
     </main>
 
     <nav class="navbar fixed-bottom navbar-light bg-light width-button-bar">

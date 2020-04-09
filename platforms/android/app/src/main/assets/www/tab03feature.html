@@ -38,6 +38,9 @@
         .icon-font {
             font-size: 40px;   
         }
+        .maincontainer {
+           height: 900px;   
+        }
         main {
             padding-top: 56px;
             padding-bottom: 50px;
@@ -53,8 +56,12 @@
             background: url(img/jokes.png) no-repeat center top;
             width: 80px;
         }
+        .center{
+            text-align: center;
+        }
         .btn2{
             background: url(img/dictionary.png) no-repeat center top;
+            background-color: white;
             width: 80px;
         }
         .btn3{
@@ -69,14 +76,12 @@
     <SCRIPT>
 
     function searchWord(url) {
-        document.getElementById("wordIdSearched").innerHTML = "";
-
         callRequest(url +'?name='+ document.getElementById('wordId').value+'&country_id=BR', function (nData) {
             var wordData = nData;
             if (wordData.age) {
-                document.getElementById("wordIdSearched").innerHTML = 'Name: '+wordData.name+', Age: '+ wordData.age;
+                document.getElementById("wordIdSearched").innerHTML += '<p></p><br>Name: '+wordData.name+'<br> Age: '+ wordData.age;
             }else{
-                document.getElementById("wordIdSearched").innerHTML = 'Name Doesn\'t exists.';                
+                document.getElementById("wordIdSearched").innerHTML += '<p></p><br>Name Doesn\'t exists.';                
             }
         });
     }
@@ -121,15 +126,16 @@
 
     <main class="container">
         <hr>
-        <h1><span class="badge badge-success">Feature Name/Age</span></h1>
+        <h1 class="center"><span class="badge badge-success center">Feature Name/Age</span></h1>
         <p></p>
-        <label>Description: Have you ever heard that you have a different name for your age? so find out if your name makes sense with your age.</label>
+        <label class="center" style="display: block;">Description: Have you ever heard that you have a different name for your age? so find out if your name makes sense with
+        your age.</label>
         <p></p>
         <label for="exampleInputEmail1">Name:</label>
-        <input type="text" class="form-control" id="wordId" aria-describedby="" placeholder="Enter text">
+        <input type="text" class="form-control" style="width: 57%;display: inline-block;margin-right: 10px;" id="wordId" aria-describedby="" placeholder="Enter text">
+        <button class="btn btn-dark" onclick="searchWord('https://api.agify.io/')">Search</button>
         <small id="emailHelp" class="form-text text-muted">Search for a name and your closest age</small>
-        <p><button class="btn btn-dark" onclick="searchWord('https://api.agify.io/')">Search</button></p>
-        <p><h1 class="mt-5" id="wordIdSearched"></h1></p>
+        <div id="wordIdSearched" style="margin: 10px;margin-bottom: 150px;"></div>
     </main>
 
     <nav class="navbar fixed-bottom navbar-light bg-light width-button-bar">

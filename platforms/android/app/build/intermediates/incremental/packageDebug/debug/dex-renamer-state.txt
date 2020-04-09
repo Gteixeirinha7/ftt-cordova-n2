@@ -1,4 +1,4 @@
-#Mon Apr 06 22:40:03 BRT 2020
+#Wed Apr 08 20:40:55 BRT 2020
 base.0=C\:\\Users\\gabri\\OneDrive\\Documentos\\GitHub\\ftt-cordova-n2\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
 path.0=classes.dex
 renamed.0=classes.dex

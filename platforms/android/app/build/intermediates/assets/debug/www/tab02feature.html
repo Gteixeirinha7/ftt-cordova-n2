@@ -38,6 +38,9 @@
         .icon-font {
             font-size: 40px;   
         }
+        .maincontainer {
+           height: 900px;   
+        }
         main {
             padding-top: 56px;
             padding-bottom: 50px;
@@ -49,12 +52,16 @@
             padding: 0px;
             width: 60px;
         }
+        .center{
+            text-align: center;
+        }
         .btn1{
             background: url(img/jokes.png) no-repeat center top;
             width: 80px;
         }
         .btn2{
             background: url(img/dictionary.png) no-repeat center top;
+            background-color: white;
             width: 80px;
         }
         .btn3{
@@ -69,10 +76,6 @@
     <SCRIPT>
 
     function searchWord(url) {
-        document.getElementById("wordIdSearched").innerHTML = "";
-        document.getElementById("meaningId").innerHTML = "";
-        document.getElementById("pronunciationId").innerHTML = "";
-
         callRequest(url+document.getElementById('wordId').value.toLocaleLowerCase(), function (nData) {
             var wordData = nData;
             if(wordData.entries.length){
@@ -81,9 +84,31 @@
                 for(var i=0; i<sensesList.length;i++){
                     msgSense += sensesList[i].definition+', ';
                 }
-                document.getElementById("wordIdSearched").innerHTML = wordData.entries[0].entry;
-                document.getElementById("meaningId").innerHTML = msgSense;
-                document.getElementById("pronunciationId").innerHTML = wordData.entries[0].pronunciations[0].transcriptions[0].transcription + ', ' + wordData.entries[0].pronunciations[0].transcriptions[0].notation+', '+ wordData.entries[0].pronunciations[0].context.regions[0];
+                var a = document.createElement("ARTICLE"); // Create a <ARTICLE> element
+                a.setAttribute("class", "card");
+
+                a.style.padding = '10px';
+                a.style.margin = '5px';
+
+                var h1 = document.createElement("H1"); // Create a <H2> element
+                var h2 = document.createElement("H2"); // Create a <H2> element
+                var desc = document.createElement("P"); // Create a <H2> element
+
+                h1.innerText = wordData.entries[0].entry;
+                h2.innerText = msgSense; // Create a text node
+                h2.style.fontSize = '18px'; // Create a text node
+                desc.innerText = wordData.entries[0].pronunciations[0].transcriptions[0].transcription + ', ' + wordData.entries[0].pronunciations[0].transcriptions[0].notation + ', ' + wordData.entries[0].pronunciations[0].context.regions[0];
+
+                a.appendChild(h1); // Append the text to 
+                a.appendChild(h2); // Append the text to 
+                a.appendChild(document.createElement("P")); // Append the text to 
+                a.appendChild(desc);
+
+                var wordString = document.getElementById("dicId").innerHTML;
+                document.getElementById("dicId").innerHTML = '';
+                document.getElementById("dicId").appendChild(a);
+                document.getElementById("dicId").innerHTML += wordString;
+
             }
         });
     }
@@ -127,19 +152,17 @@
         </div>
     </nav>
 
-    <main class="container"  >
+    <main class="container maincontainer"  >
         <hr>
-        <h1><span class="badge badge-success">Feature Dictionary</span></h1>
+        <h1 class="center" ><span class="badge badge-success center">Feature Dictionary</span></h1>
         <p></p>
-        <label>Description: Search for the meaning of an English word</label>
+        <label class="center" style="display: block;">Description: Search for the meaning of an English word</label>
         <p></p>
         <label for="exampleInputEmail1">Word:</label>
-        <input type="text" class="form-control" id="wordId" aria-describedby="" placeholder="Enter text">
+        <input type="text" class="form-control" style="width: 57%;display: inline-block;margin-right: 10px;" id="wordId" aria-describedby="" placeholder="Enter text">
+        <button class="btn btn-dark" onclick="searchWord('https://lingua-robot.p.rapidapi.com/language/v1/entries/en/')">Search</button>
         <small id="emailHelp" class="form-text text-muted">Search for a word meaning</small>
-        <p><button class="btn btn-dark" onclick="searchWord('https://lingua-robot.p.rapidapi.com/language/v1/entries/en/')">Search</button></p>
-        <h1 class="mt-5" id="wordIdSearched"></h1>
-        <p class="lead" id="meaningId"></p>
-        <p id="pronunciationId"></p>
+        <div id="dicId" style="margin-bottom: 150px;"></div>
     </main>
 
     <nav class="navbar fixed-bottom navbar-light bg-light width-button-bar">
